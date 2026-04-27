@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ImpactFlow | Helping the Right People at the Right Time</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-container": "#4f46e5",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-fixed": "#351000",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#464555",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#3525cd",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "secondary-fixed": "#dae2fd",
+                    "surface-dim": "#cbdbf5",
+                    "surface-variant": "#d3e4fe",
+                    "on-tertiary-container": "#ffd2be",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-background": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "secondary": "#565e74",
+                    "on-error": "#ffffff",
+                    "tertiary": "#7e3000",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-tint": "#4d44e3",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-container": "#a44100",
+                    "outline-variant": "#c7c4d8",
+                    "inverse-surface": "#213145",
+                    "on-primary-container": "#dad7ff",
+                    "outline": "#777587",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#dae2fd",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#0f0069"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "xl": "64px",
+                    "margin": "32px",
+                    "max_width": "1280px",
+                    "xs": "4px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h3": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(241, 245, 249, 1);
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
+        }
+        .impact-gradient {
+            background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.05), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background selection:bg-primary-container selection:text-white">
+<!-- Top Navigation Shell -->
+<nav class="sticky top-0 w-full flex justify-between items-center px-6 h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm z-50 font-inter antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-indigo-600 dark:text-indigo-400">ImpactFlow</span>
+<div class="hidden md:flex gap-6">
+<a class="text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 font-semibold transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-500 transition-colors" href="#">Live Map</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-500 transition-colors" href="#">Impact</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-500 transition-colors" href="#">Volunteers</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 text-slate-500 mr-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="text-sm">Search projects...</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-all active:scale-95">Create Need</button>
+<span class="material-symbols-outlined text-slate-600 cursor-pointer p-1 hover:bg-slate-100 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-slate-600 cursor-pointer p-1 hover:bg-slate-100 rounded-full transition-colors">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+<img alt="NGO Coordinator Profile" class="w-full h-full object-cover" data-alt="professional portrait of a confident woman with a kind expression in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw_7JDHz93wZj-f9HakNS0i497XO7LRL4zzIsrNrkAa_XjcAueiNE58rTFcYsLbeQJzfjNzvCRBZ97y1B5AWh9Zviq6zKgvnXCHa41SYBt2Fq6JwaZWsLePps0n2btC2s6R3VtkcDIRIJUjgS7JCc6Q1wanfsLk1adHjn72SmDXscCcCS88_jBiVhad0OKQWG4MLnm2oG8zGNDguxWgbQwx9AtxBzQFgEJcoOrM0tIOOwiVIpHjeyGDNrna1x5BKbrKDpoHNfnEA9O"/>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative overflow-hidden pt-xl pb-24 impact-gradient">
+<div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-xl items-center">
+<div class="lg:col-span-6 space-y-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 text-primary-container rounded-full text-label-sm font-label-caps">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    NEW: AI DISPATCHING v2.4
+                </div>
+<h1 class="font-display text-display text-on-surface">Helping the Right People at the Right Time</h1>
+<p class="font-h3 text-h3 text-secondary leading-relaxed">AI-powered volunteer coordination for NGOs and local communities.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Transform scattered reports, paper surveys, and volunteer lists into fast action and measurable social impact.</p>
+<div class="flex flex-wrap gap-md pt-base">
+<button class="bg-primary text-on-primary px-xl py-md rounded-xl font-h3 text-h3 hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">Register as NGO</button>
+<button class="bg-white border border-outline-variant text-on-surface px-xl py-md rounded-xl font-h3 text-h3 hover:bg-surface-container-low transition-all active:scale-95">Join as Volunteer</button>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50">
+<img alt="Dashboard Preview" class="w-full h-auto" data-alt="sleek modern software dashboard displaying colorful analytics charts, interactive maps, and real-time social impact metrics in a clean interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVhGOG1XXz3eA_NV4__Vji2y4Jh5X9Hk_0TAkDcRAS1KgCjlZm4Hyizb66v7v8wVbuZUy5Bdub_NknOvkIP3mmCA1oeffnYmrgCmUY-O-yCMcyd9c6XFc_hubaobh77pvDovjVSaoGzMM8rwA0nO2A6uMQ8iO-fQBN8V4GtWdLhs83uZ3_ncy5K1kaxO-TEwT3dO0W42798ExCPnq-VBy6FM-o5rjmeE0Ic7Fj4hPuCb3RvvzKJZHoHA3DJP4E36WQpBetXghHTgTI"/>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-indigo-100 rounded-full blur-3xl -z-10 opacity-50"></div>
+<div class="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-50 rounded-full blur-2xl -z-10 opacity-50"></div>
+</div>
+</div>
+</header>
+<!-- Partner NGOs (Social Proof) -->
+<section class="py-lg bg-white border-y border-slate-100">
+<div class="max-w-[1280px] mx-auto px-6">
+<p class="text-center font-label-caps text-label-caps text-outline mb-md">TRUSTED BY LEADING HUMANITARIAN ORGANIZATIONS</p>
+<div class="flex flex-wrap justify-center items-center gap-xl grayscale opacity-60">
+<div class="flex items-center gap-2 font-bold text-xl text-slate-800">GLOBAL RELIEF</div>
+<div class="flex items-center gap-2 font-bold text-xl text-slate-800">ECO-ACTION</div>
+<div class="flex items-center gap-2 font-bold text-xl text-slate-800">HUMANITY FIRST</div>
+<div class="flex items-center gap-2 font-bold text-xl text-slate-800">GREEN CROSS</div>
+<div class="flex items-center gap-2 font-bold text-xl text-slate-800">VITAL VOICES</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Section: How It Works -->
+<section class="py-xl max-w-[1280px] mx-auto px-6">
+<div class="mb-xl text-center">
+<h2 class="font-h1 text-h1 text-on-surface mb-xs">Efficiency through Intelligence</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our platform streamlines the entire crisis-to-resolution lifecycle.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Feature -->
+<div class="md:col-span-8 glass-card rounded-2xl p-lg flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="w-12 h-12 bg-primary-container text-white rounded-xl flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">map</span>
+</div>
+<h3 class="font-h2 text-h2 mb-sm">Live Resource Mapping</h3>
+<p class="font-body-md text-on-surface-variant max-w-md">Real-time geospatial visualization of needs, available volunteers, and relief supplies. Identify gaps before they become crises.</p>
+</div>
+<div class="mt-xl rounded-xl overflow-hidden h-48 border border-slate-100">
+<img alt="Map View" class="w-full h-full object-cover" data-alt="top-down digital map of a city with glowing hexagonal overlays representing resource density and live tracking markers" data-location="Geneva" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxlqY4pw5J55o17GcsAOtVhhhJa-ed_xEhCY2KrrKWQofb9GQwkdRn72Gw53N2cVkMLmI5NMexOOccFtRNDSYe4TeH8fqew8Mpx9DpoqUJBHmxI-U7y8p4WIuxlsUVeqW5qYCEngKUNU_Mksv1Zlou-CUmCQwH_NZK8pQdqBV5OEYEL8SYaIEDPqqWNJv11zBCCwZO0V9MOiyyJ4r4wUd3-ebWc9UlOuAKNE0d8IaWbzjVdO5T03fFyaTISH8FioCJIW6DyJcZdxqN"/>
+</div>
+</div>
+<!-- Secondary Feature -->
+<div class="md:col-span-4 bg-primary-container text-on-primary-container rounded-2xl p-lg flex flex-col">
+<div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-md">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="font-h2 text-h2 mb-sm text-white">AI-Driven Matching</h3>
+<p class="font-body-sm opacity-90 mb-xl">Our proprietary algorithm matches volunteers based on skillsets, proximity, and historical reliability scores, ensuring 40% faster deployment.</p>
+<div class="mt-auto bg-white/10 p-md rounded-xl border border-white/20">
+<div class="flex items-center gap-base mb-xs">
+<div class="w-2 h-2 rounded-full bg-green-400"></div>
+<span class="text-label-sm">Optimal Match Found</span>
+</div>
+<p class="font-label-caps text-[10px]">Volunteer ID: #7721 - Certified Medic</p>
+</div>
+</div>
+<!-- Smaller Features -->
+<div class="md:col-span-4 glass-card rounded-2xl p-md">
+<span class="material-symbols-outlined text-primary mb-sm">assignment_turned_in</span>
+<h4 class="font-h3 text-h3 mb-xs">Verified Reports</h4>
+<p class="font-body-sm text-on-surface-variant">Blockchain-backed verification for field data to prevent aid duplication and fraud.</p>
+</div>
+<div class="md:col-span-4 glass-card rounded-2xl p-md">
+<span class="material-symbols-outlined text-primary mb-sm">groups</span>
+<h4 class="font-h3 text-h3 mb-xs">Volunteer CRM</h4>
+<p class="font-body-sm text-on-surface-variant">Comprehensive profiles with gamified impact tracking and skill certification paths.</p>
+</div>
+<div class="md:col-span-4 glass-card rounded-2xl p-md">
+<span class="material-symbols-outlined text-primary mb-sm">bar_chart</span>
+<h4 class="font-h3 text-h3 mb-xs">Automated Reporting</h4>
+<p class="font-body-sm text-on-surface-variant">Generate donor-ready impact reports in seconds with verified SDG compliance metrics.</p>
+</div>
+</div>
+</section>
+<!-- SDG Impact Section -->
+<section class="bg-surface-container-low py-xl">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
+<div class="max-w-2xl">
+<h2 class="font-h1 text-h1 text-on-surface mb-xs">Measuring Global Impact</h2>
+<p class="font-body-lg text-on-surface-variant">We align every action with the United Nations Sustainable Development Goals.</p>
+</div>
+<button class="text-primary font-semibold flex items-center gap-xs">View Full SDG Audit <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="bg-white p-lg rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-[#E5243B] text-white rounded-lg flex items-center justify-center mb-md font-bold text-2xl">1</div>
+<span class="font-label-caps text-on-surface-variant">No Poverty</span>
+<p class="text-label-sm text-outline mt-base">Direct Aid Distribution</p>
+</div>
+<div class="bg-white p-lg rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-[#4C9F38] text-white rounded-lg flex items-center justify-center mb-md font-bold text-2xl">3</div>
+<span class="font-label-caps text-on-surface-variant">Good Health</span>
+<p class="text-label-sm text-outline mt-base">Medical Volunteering</p>
+</div>
+<div class="bg-white p-lg rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-[#FF3A21] text-white rounded-lg flex items-center justify-center mb-md font-bold text-2xl">10</div>
+<span class="font-label-caps text-on-surface-variant">Reduced Inequalities</span>
+<p class="text-label-sm text-outline mt-base">Universal Access</p>
+</div>
+<div class="bg-white p-lg rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-[#19486A] text-white rounded-lg flex items-center justify-center mb-md font-bold text-2xl">17</div>
+<span class="font-label-caps text-on-surface-variant">Partnerships</span>
+<p class="text-label-sm text-outline mt-base">Inter-NGO Coordination</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Success Metrics -->
+<section class="py-xl">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl items-center">
+<div class="lg:col-span-1">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">Our collective impact in numbers</h2>
+<p class="font-body-md text-on-surface-variant mb-lg">Helping communities respond faster to climate challenges, social displacement, and local emergencies.</p>
+<div class="p-md bg-primary/5 rounded-xl border border-primary/10">
+<p class="text-primary font-semibold text-sm">"ImpactFlow reduced our response time by 34 hours during the last flood."</p>
+<p class="text-xs text-secondary mt-base">— Director, Relief Alliance</p>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="p-xl bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+<div class="text-[56px] font-bold text-primary mb-xs tracking-tighter">4.2M</div>
+<div class="font-h3 text-h3">Beneficiaries reached</div>
+<p class="text-on-surface-variant mt-sm">Verified lives impacted through coordinated volunteer efforts across 40+ countries.</p>
+</div>
+<div class="p-xl bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+<div class="text-[56px] font-bold text-primary mb-xs tracking-tighter">12k+</div>
+<div class="font-h3 text-h3">Active NGOs</div>
+<p class="text-on-surface-variant mt-sm">Organizations using our dashboard to streamline their daily social impact operations.</p>
+</div>
+<div class="p-xl bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+<div class="text-[56px] font-bold text-primary mb-xs tracking-tighter">850k</div>
+<div class="font-h3 text-h3">Volunteer hours</div>
+<p class="text-on-surface-variant mt-sm">Meticulously logged and verified social contribution hours through our mobile app.</p>
+</div>
+<div class="p-xl bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+<div class="text-[56px] font-bold text-primary mb-xs tracking-tighter">14min</div>
+<div class="font-h3 text-h3">Avg. Response Time</div>
+<p class="text-on-surface-variant mt-sm">From incident report to local volunteer dispatch—setting a new global standard.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer CTA -->
+<section class="max-w-[1280px] mx-auto px-6 pb-xl">
+<div class="bg-on-surface rounded-[40px] p-xl text-center text-white relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+<div class="relative z-10 max-w-2xl mx-auto py-lg">
+<h2 class="font-display text-display mb-md">Ready to amplify your impact?</h2>
+<p class="font-body-lg text-white/80 mb-xl">Join thousands of organizations worldwide. Deployment takes less than 24 hours.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-md">
+<button class="bg-primary text-white px-xl py-md rounded-xl font-semibold hover:bg-opacity-90 transition-all">Get Started Today</button>
+<button class="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-xl py-md rounded-xl font-semibold hover:bg-white/20 transition-all">Request Demo</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white pt-xl border-t border-slate-100 pb-16">
+<div class="max-w-[1280px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-xl">
+<div class="col-span-2">
+<span class="text-2xl font-black tracking-tighter text-indigo-600 mb-md block">ImpactFlow</span>
+<p class="text-on-surface-variant font-body-sm leading-relaxed max-w-xs">Building the digital infrastructure for a more resilient and compassionate world.</p>
+</div>
+<div>
+<h5 class="font-label-caps text-on-surface mb-md">Product</h5>
+<ul class="space-y-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">Features</a></li>
+<li><a class="hover:text-primary" href="#">Pricing</a></li>
+<li><a class="hover:text-primary" href="#">Security</a></li>
+<li><a class="hover:text-primary" href="#">Mobile App</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-on-surface mb-md">NGOs</h5>
+<ul class="space-y-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">Case Studies</a></li>
+<li><a class="hover:text-primary" href="#">Integration</a></li>
+<li><a class="hover:text-primary" href="#">SDG Tracking</a></li>
+<li><a class="hover:text-primary" href="#">Donors</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-on-surface mb-md">Company</h5>
+<ul class="space-y-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Careers</a></li>
+<li><a class="hover:text-primary" href="#">Contact</a></li>
+<li><a class="hover:text-primary" href="#">Press</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-on-surface mb-md">Legal</h5>
+<ul class="space-y-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">Privacy</a></li>
+<li><a class="hover:text-primary" href="#">Terms</a></li>
+<li><a class="hover:text-primary" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-6 mt-xl pt-md border-t border-slate-50 flex flex-col md:flex-row justify-between items-center text-label-sm text-outline gap-md">
+<p>© 2024 ImpactFlow Inc. All rights reserved.</p>
+<div class="flex gap-md">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">public</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">partner_reports</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">verified_user</span>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 pb-safe bg-white dark:bg-slate-900 z-50 border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] md:hidden">
+<div class="flex flex-col items-center gap-1 text-indigo-600 dark:text-indigo-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Tasks</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Map</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>

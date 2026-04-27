@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-container": "#4f46e5",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-fixed": "#351000",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#464555",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#3525cd",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "secondary-fixed": "#dae2fd",
+                    "surface-dim": "#cbdbf5",
+                    "surface-variant": "#d3e4fe",
+                    "on-tertiary-container": "#ffd2be",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-background": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "secondary": "#565e74",
+                    "on-error": "#ffffff",
+                    "tertiary": "#7e3000",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-tint": "#4d44e3",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-container": "#a44100",
+                    "outline-variant": "#c7c4d8",
+                    "inverse-surface": "#213145",
+                    "on-primary-container": "#dad7ff",
+                    "outline": "#777587",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#dae2fd",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#0f0069"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "xl": "64px",
+                    "margin": "32px",
+                    "max_width": "1280px",
+                    "xs": "4px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h3": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+        }
+        .bento-card {
+            background: #ffffff;
+            border: 1px solid #F1F5F9;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
+            transition: all 0.2s ease-in-out;
+        }
+        .bento-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full flex justify-between items-center px-6 h-16 bg-white/90 backdrop-blur-md border-b border-slate-200 z-40 shadow-sm font-inter antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<div class="text-xl font-bold tracking-tighter text-indigo-600">ImpactFlow</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 font-medium hover:text-indigo-500 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 font-medium hover:text-indigo-500 transition-colors" href="#">Live Map</a>
+<a class="text-slate-500 font-medium hover:text-indigo-500 transition-colors" href="#">Impact</a>
+<a class="text-indigo-600 border-b-2 border-indigo-600 font-semibold transition-colors" href="#">Volunteers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 border-none rounded-full text-sm focus:ring-2 focus:ring-indigo-500 w-64" placeholder="Search resources..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-slate-500 hover:bg-slate-100 p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-slate-500 hover:bg-slate-100 p-2 rounded-full transition-all">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+<img alt="NGO Coordinator Profile" data-alt="professional portrait of an NGO coordinator with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgkBzLjWC2YDieL4vw9CUUS3vQgd0TYQ9LsDN4qReaBZxJ1sK6LpXGvmRrDOxfpPnA8B-6QDetagQV6atjyogaqDwf92-7mS_nLt_bZw9pB23jJmdy9E6n4sapVMbwnoz2en2ajhsKWhhTYFiwcmVwVLxV6PtGf64iIeni3KlkgrrnFJtsRHllF-7xUmDKddco6YqYdyy6JqnorQp5W5WQ83OdmAcNEEAKauQXO0or13zUQ0NXu7uC8HMUXkOCRLMvjG6TmCmi6wzB"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-slate-200 bg-slate-50 hidden md:flex flex-col p-4 gap-2">
+<div class="mb-6 px-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">public</span>
+</div>
+<div>
+<div class="text-sm font-black text-slate-900 uppercase tracking-tight">Global Relief</div>
+<div class="text-[10px] text-slate-500 font-semibold">Institutional Partner</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-indigo-600">dashboard</span> Overview
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-indigo-600">map</span> Live Map
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-indigo-600">assignment_late</span> Resource Needs
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-white text-indigo-600 shadow-sm rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_search</span> Volunteer Match
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-indigo-600">bar_chart</span> Impact Reports
+                </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-200 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined">help</span> Help Center
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-200/50 transition-all rounded-lg text-sm font-medium" href="#">
+<span class="material-symbols-outlined">logout</span> Log Out
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-gutter lg:p-lg bg-surface">
+<div class="max-w-max_width mx-auto">
+<!-- Header Section -->
+<div class="mb-margin flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">AI Assisted Matching</span>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface">Volunteer Matching Engine</h1>
+<p class="text-on-surface-variant font-body-md mt-2">Optimizing human capital for maximum humanitarian impact.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-outline-variant text-on-surface bg-white rounded-lg font-label-sm hover:bg-slate-50 transition-all">Export Report</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-sm shadow-sm hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span> New Mission
+                        </button>
+</div>
+</div>
+<!-- Matching Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Need Details -->
+<div class="lg:col-span-5 space-y-gutter">
+<div class="bento-card rounded-xl overflow-hidden">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="medical clinic interior in a rural community setting with bright clean surfaces and wooden accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2Kaezss1kH9YKxHcc2y_frLGpgg4qmMETnoGA-UQ4oMmDO_2eU6fVLc5wEtzQZ0okgljGYlnpUh__xo4glrHPns3_dINR7KfDi8D-zCOOfQbZVp3CcfPZ-2opbUJ1jl1V0QCHC9nTsksIp8COuleYV9_8TAs2KGL-KaWNNgQ3_gde5L_UcU9AfYPzLlioexCOqAyeHpOQRJWsR_qoPEq_yqandqv0ynwCAYfvNqbPjIciQ3QNtw-XiOFdWxqhVu1oMJoQ19kLeoyP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-md">
+<span class="bg-error text-white px-3 py-1 rounded-full text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">priority_high</span> Critical Urgency
+                                    </span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-h3 text-h3">Community Clinic Triage</h3>
+<span class="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-label-sm font-semibold">Medical Services</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-indigo-500">location_on</span>
+<span class="font-body-sm">East District Health Center, Block 4, Mumbai</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-indigo-500">calendar_today</span>
+<span class="font-body-sm">Starts Today • 08:00 AM - 04:00 PM</span>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<h4 class="text-label-caps text-on-surface mb-2">Required Skills</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-slate-100 rounded text-label-sm">Primary Care</span>
+<span class="px-2 py-1 bg-slate-100 rounded text-label-sm">Emergency Triage</span>
+<span class="px-2 py-1 bg-slate-100 rounded text-label-sm">Bilingual (Hindi/English)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Intelligence Card -->
+<div class="bento-card rounded-xl p-md bg-gradient-to-br from-indigo-50 to-white border-indigo-100">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-indigo-600" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h4 class="font-h3 text-lg text-indigo-900">Matching Intelligence</h4>
+</div>
+<div class="space-y-4">
+<div class="bg-white/80 p-sm rounded-lg border border-indigo-100 ai-glow">
+<p class="text-indigo-800 font-medium leading-relaxed italic">"Rahul is the strongest match because he is a doctor and lives 2km away from the East District Health Center."</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 bg-white/50 rounded-lg">
+<div class="text-indigo-600 font-bold text-xl">98.4%</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Accuracy Score</div>
+</div>
+<div class="p-3 bg-white/50 rounded-lg">
+<div class="text-indigo-600 font-bold text-xl">1.2ms</div>
+<div class="text-[10px] uppercase font-bold text-slate-500">Match Speed</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Top Recommended Volunteers -->
+<div class="lg:col-span-7">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-h2 text-h2">Recommended Volunteers</h2>
+<span class="text-label-sm text-slate-400">Showing 3 best matches</span>
+</div>
+<div class="space-y-4">
+<!-- Match 1: Rahul (The Best Match) -->
+<div class="bento-card rounded-xl p-4 border-2 border-indigo-400 relative overflow-hidden group">
+<div class="absolute top-0 right-0 bg-indigo-600 text-white px-4 py-1 text-[10px] font-black uppercase tracking-tighter rounded-bl-xl shadow-md z-10">AI Choice</div>
+<div class="flex flex-col md:flex-row gap-gutter">
+<div class="relative flex-shrink-0">
+<img class="w-24 h-24 rounded-2xl object-cover border-4 border-white shadow-sm" data-alt="headshot of a middle-aged male doctor with a warm professional smile wearing a stethoscope" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMIVhSclxiB0sjGzEySwjY57OZhERoRqDCPuzDrQ4E34ysAOJFk0mLVevmvCUUGXOEDkyDOAvsc-FRnSlgGVnfayj1SNfaw0mooWb9PSNsA5LKgE7w7cfC2-CtcRsRSbakb5kIpcGurq87sIgdS2WXgBOfrtXQTXnfBDlWs_KOi3EAOLwXScCxn3xU1F9fUJTySEhp0SfQ0ld7iLmzSfgI3abcutviikZNFtKaOi8OTVvo8EPzD4T498Bc2DNQdp1U-6feEOye-Qog"/>
+<div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<div>
+<h4 class="font-h3 text-xl text-on-surface">Rahul S.</h4>
+<p class="text-indigo-600 font-bold text-sm">Certified Medical Doctor</p>
+</div>
+<div class="text-right">
+<div class="text-2xl font-black text-indigo-600 tracking-tight">98%</div>
+<div class="text-[10px] uppercase font-bold text-slate-400">Match Score</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4">
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">distance</span>
+<div class="text-label-sm font-bold">2.1km</div>
+</div>
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">history</span>
+<div class="text-label-sm font-bold">42 Missions</div>
+</div>
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">bolt</span>
+<div class="text-label-sm font-bold">Available</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center" title="Verified Badge">
+<span class="material-symbols-outlined text-xs text-indigo-600" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center" title="Expert Level">
+<span class="material-symbols-outlined text-xs text-amber-500" style="font-variation-settings: 'FILL' 1;">grade</span>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-label-sm shadow-md hover:scale-105 transition-transform active:scale-95">Assign Volunteer</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Match 2 -->
+<div class="bento-card rounded-xl p-4 flex flex-col md:flex-row gap-gutter">
+<div class="relative flex-shrink-0">
+<img class="w-24 h-24 rounded-2xl object-cover border-4 border-white shadow-sm" data-alt="portrait of a young woman with a focused intelligent expression outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC27qPzowyh2Ly7OUb09okw1NBFChSbj10bRSa-Z9kF5xhZs9MMM7yGCA65DvzdHvh6FqU_VzmAqaeUFE_upkL3R6BgZVtCj5pmVbTwTVUBqc8VGOIOitrv7XF0Wr0TWUXuk5qEZTSusaIScQtfB3xm8FCKrX2vTIRpokExc4EDh5dgpuwyTuqJQlnMwbcOsvoUh8_XJUCqG7ApH1FLFHtplZupa9D69zKidxAVg_97seCpLLBGxUigYM46bdQdwZ-Xw870hJeffpb"/>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<div>
+<h4 class="font-h3 text-lg text-on-surface">Priya K.</h4>
+<p class="text-slate-500 font-medium text-sm">Registered Nurse</p>
+</div>
+<div class="text-right">
+<div class="text-xl font-bold text-slate-700 tracking-tight">85%</div>
+<div class="text-[10px] uppercase font-bold text-slate-400">Match Score</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4">
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">distance</span>
+<div class="text-label-sm font-bold">4.8km</div>
+</div>
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">history</span>
+<div class="text-label-sm font-bold">12 Missions</div>
+</div>
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">schedule</span>
+<div class="text-label-sm font-bold">In 2 Hours</div>
+</div>
+</div>
+<div class="flex justify-end">
+<button class="bg-white border border-outline-variant text-on-surface px-6 py-2 rounded-lg font-label-sm hover:bg-slate-50 transition-all">Assign Volunteer</button>
+</div>
+</div>
+</div>
+<!-- Match 3 -->
+<div class="bento-card rounded-xl p-4 flex flex-col md:flex-row gap-gutter">
+<div class="relative flex-shrink-0">
+<img class="w-24 h-24 rounded-2xl object-cover border-4 border-white shadow-sm" data-alt="man in his 30s with a kind expression in casual clothes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWTixywRXLexkCeY3PO-2azKpx_Ic1bOxlzjleHw-lL6dCL3V_vT2-m2zStztmj6WlvdDK43VI9RTsDD8y3ol4fUOGC6iJZ4GtBzuOtz_QgC-H0cSCOQzL5GTt-wNMNm-BFkZ-wTHSf5CvUJebc8xeAiJ3N8qoRlgS_7iRGzcZgyBcqEaMDeeMRNCutzCvWd4UhbLKdhxrGIynCoU_k8go8zbR2pakf1qpkIZerJfVroSyp3fCwk7srIV2sXFpWVo5imvhD-7N7SlA"/>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<div>
+<h4 class="font-h3 text-lg text-on-surface">Mark J.</h4>
+<p class="text-slate-500 font-medium text-sm">Medical Student (Final Year)</p>
+</div>
+<div class="text-right">
+<div class="text-xl font-bold text-slate-700 tracking-tight">72%</div>
+<div class="text-[10px] uppercase font-bold text-slate-400">Match Score</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4">
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">distance</span>
+<div class="text-label-sm font-bold">1.5km</div>
+</div>
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">history</span>
+<div class="text-label-sm font-bold">5 Missions</div>
+</div>
+<div class="bg-slate-50 p-2 rounded-lg text-center">
+<span class="material-symbols-outlined text-sm text-slate-400 mb-1">bolt</span>
+<div class="text-label-sm font-bold">Available</div>
+</div>
+</div>
+<div class="flex justify-end">
+<button class="bg-white border border-outline-variant text-on-surface px-6 py-2 rounded-lg font-label-sm hover:bg-slate-50 transition-all">Assign Volunteer</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 pb-safe bg-white border-t border-slate-200 md:hidden z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Tasks</span>
+</div>
+<div class="flex flex-col items-center text-indigo-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Map</span>
+</div>
+<div class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>

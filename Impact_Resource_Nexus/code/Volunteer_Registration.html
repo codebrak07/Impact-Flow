@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-container": "#4f46e5",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-fixed": "#351000",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#464555",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#3525cd",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-secondary-fixed-variant": "#3f465c",
+                    "secondary-fixed": "#dae2fd",
+                    "surface-dim": "#cbdbf5",
+                    "surface-variant": "#d3e4fe",
+                    "on-tertiary-container": "#ffd2be",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-background": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "secondary": "#565e74",
+                    "on-error": "#ffffff",
+                    "tertiary": "#7e3000",
+                    "secondary-fixed-dim": "#bec6e0",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-tint": "#4d44e3",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-container": "#a44100",
+                    "outline-variant": "#c7c4d8",
+                    "inverse-surface": "#213145",
+                    "on-primary-container": "#dad7ff",
+                    "outline": "#777587",
+                    "on-secondary-container": "#5c647a",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#dae2fd",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#0f0069"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "40px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "xl": "64px",
+                    "margin": "32px",
+                    "max_width": "1280px",
+                    "xs": "4px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h3": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen">
+<!-- TopNavBar (Shared Component JSON Mapping) -->
+<nav class="sticky top-0 w-full flex justify-between items-center px-6 h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm z-40">
+<div class="flex items-center gap-base">
+<span class="text-xl font-bold tracking-tighter text-indigo-600 dark:text-indigo-400 font-h2">ImpactFlow</span>
+</div>
+<div class="hidden md:flex gap-md items-center">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors font-label-sm" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors font-label-sm" href="#">Live Map</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors font-label-sm" href="#">Impact</a>
+<a class="text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 font-semibold font-label-sm" href="#">Volunteers</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex bg-primary px-sm py-xs rounded-lg text-white font-label-sm hover:opacity-90 transition-all">Create Need</button>
+<div class="flex gap-xs">
+<span class="material-symbols-outlined text-slate-500 p-base hover:bg-surface-container rounded-full cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-slate-500 p-base hover:bg-surface-container rounded-full cursor-pointer">settings</span>
+</div>
+<img alt="NGO Coordinator Profile" class="w-base h-base rounded-full" data-alt="Close up professional headshot of a friendly NGO coordinator in a bright office setting with soft background bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzCOiZCcrCUa8LvRpu0YSC1ghZxStxCcQ1bqii74VbJTiHtrQwq5eggKHXTjnTpLJGe-L5RHjTUBncntt5LlEfRDKV6NG9wpyilz9ddATC-E_37Jrf28P9o-mzmNISy5s8RDVckBFiQVC0FbRC_KTmtBp_7keaLI_wt5PEbvi3GRT5oGzOkCAZ9ddCvQG1XqfTEgh10cqc2PyjTh3DDIQMvSHZk63yx8XgMogPqLoCySYEL26ioTMoAkZyj9DBJoQ5H1oWv_ysY7rR"/>
+</div>
+</nav>
+<main class="max-w-[800px] mx-auto px-gutter py-xl">
+<!-- Progress Header -->
+<div class="mb-xl">
+<div class="flex justify-between items-center mb-sm">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-xs">Join the Mission</h1>
+<p class="font-body-md text-secondary">Your contribution makes an immediate impact on global relief efforts.</p>
+</div>
+<div class="hidden sm:block text-right">
+<span class="font-label-caps text-secondary">STEP 02 OF 04</span>
+<div class="font-h3 text-primary">Skills &amp; Experience</div>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest h-base rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/2 rounded-full transition-all duration-500"></div>
+</div>
+</div>
+<!-- Form Card -->
+<div class="bg-white border border-slate-100 rounded-xl shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] p-lg">
+<form class="space-y-lg">
+<!-- Section 1: Identity -->
+<section>
+<div class="flex items-center gap-sm mb-md">
+<div class="bg-primary-container w-base h-base rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]">person</span>
+</div>
+<h2 class="font-h3 text-h3">Personal Information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-sm text-secondary">Full Name</label>
+<input class="w-full px-sm py-sm border border-slate-200 rounded-lg font-body-md placeholder:text-slate-300" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-secondary">Professional Email</label>
+<input class="w-full px-sm py-sm border border-slate-200 rounded-lg font-body-md placeholder:text-slate-300" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+</section>
+<hr class="border-slate-100"/>
+<!-- Section 2: Skills & Tags -->
+<section>
+<div class="flex items-center gap-sm mb-md">
+<div class="bg-primary-container w-base h-base rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]">bolt</span>
+</div>
+<h2 class="font-h3 text-h3">Skills &amp; Expertise</h2>
+</div>
+<div class="space-y-md">
+<div class="flex flex-wrap gap-xs">
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-primary/10 text-primary rounded-full font-label-sm">
+                                Logistics <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-primary/10 text-primary rounded-full font-label-sm">
+                                Medical First Aid <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-primary/10 text-primary rounded-full font-label-sm">
+                                Crisis Communication <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<button class="inline-flex items-center gap-xs px-sm py-xs border border-dashed border-slate-300 text-secondary rounded-full font-label-sm hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]">add</span> Add Skill
+                            </button>
+</div>
+<div class="p-sm bg-surface rounded-lg border border-slate-100">
+<p class="font-label-sm text-secondary mb-sm">Recommended for you based on profile:</p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-xs bg-white border border-slate-200 text-slate-600 rounded-lg font-label-sm hover:bg-slate-50 cursor-pointer">Project Management</span>
+<span class="px-sm py-xs bg-white border border-slate-200 text-slate-600 rounded-lg font-label-sm hover:bg-slate-50 cursor-pointer">Translation</span>
+<span class="px-sm py-xs bg-white border border-slate-200 text-slate-600 rounded-lg font-label-sm hover:bg-slate-50 cursor-pointer">Heavy Machinery</span>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-slate-100"/>
+<!-- Section 3: Availability & Geography -->
+<section>
+<div class="flex items-center gap-sm mb-md">
+<div class="bg-primary-container w-base h-base rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]">calendar_month</span>
+</div>
+<h2 class="font-h3 text-h3">Availability &amp; Reach</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="space-y-md">
+<label class="font-label-sm text-secondary">General Availability</label>
+<div class="grid grid-cols-2 gap-xs">
+<label class="flex items-center gap-xs p-sm border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm">Weekdays</span>
+</label>
+<label class="flex items-center gap-xs p-sm border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm">Weekends</span>
+</label>
+<label class="flex items-center gap-xs p-sm border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm">Evenings</span>
+</label>
+<label class="flex items-center gap-xs p-sm border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50">
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm">On-Call</span>
+</label>
+</div>
+</div>
+<div class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-sm text-secondary">Home Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-slate-400">location_on</span>
+<input class="w-full pl-xl pr-sm py-sm border border-slate-200 rounded-lg font-body-md placeholder:text-slate-300" placeholder="City, Country" type="text"/>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-secondary">Travel Radius</label>
+<span class="font-label-sm text-primary font-bold">50 km</span>
+</div>
+<input class="w-full h-xs bg-slate-100 rounded-lg appearance-none cursor-pointer accent-primary" max="200" min="0" step="10" type="range" value="50"/>
+<div class="flex justify-between text-[10px] text-slate-400 uppercase font-bold">
+<span>Local only</span>
+<span>Regional</span>
+<span>National</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-slate-100"/>
+<!-- Section 4: Experience -->
+<section>
+<div class="flex items-center gap-sm mb-md">
+<div class="bg-primary-container w-base h-base rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]">history</span>
+</div>
+<h2 class="font-h3 text-h3">Previous Experience</h2>
+</div>
+<div class="space-y-sm">
+<textarea class="w-full px-sm py-sm border border-slate-200 rounded-lg font-body-md placeholder:text-slate-300 resize-none" placeholder="Briefly describe your past humanitarian or volunteer work..." rows="4"></textarea>
+<p class="text-[12px] text-slate-400">Mention specific organizations or roles to speed up your verification process.</p>
+</div>
+</section>
+<!-- Footer Actions -->
+<div class="pt-lg flex flex-col sm:flex-row gap-md justify-between items-center border-t border-slate-100">
+<button class="order-2 sm:order-1 flex items-center gap-xs text-secondary font-label-sm hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Back to Identity
+                    </button>
+<button class="order-1 sm:order-2 w-full sm:w-auto px-xl py-sm bg-primary text-white rounded-lg font-label-sm font-bold shadow-md hover:translate-y-[-1px] active:translate-y-[0] transition-all" type="submit">
+                        Continue to Verification
+                    </button>
+</div>
+</form>
+</div>
+<!-- Trust Indicator -->
+<div class="mt-lg flex items-center justify-center gap-sm text-slate-400">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="text-[12px] font-medium">Your data is encrypted and used only for mission matching.</span>
+</div>
+</main>
+<!-- SideNavBar (Shared Component JSON Mapping - Tablet/Desktop) -->
+<aside class="fixed left-0 top-0 h-full hidden md:flex flex-col p-4 gap-2 h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 z-30">
+<div class="flex items-center gap-sm px-base py-md mb-md">
+<div class="w-base h-base bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white dark:text-slate-950 text-[16px]">public</span>
+</div>
+<div>
+<h3 class="text-lg font-black text-slate-900 dark:text-white leading-none">Global Relief</h3>
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Institutional Partner</span>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm px-sm py-sm text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-medium text-sm">Live Map</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-medium text-sm">Resource Needs</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_search</span>
+<span class="font-medium text-sm">Volunteer Match</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-medium text-sm">Impact Reports</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-slate-200 dark:border-slate-800 space-y-xs">
+<a class="flex items-center gap-sm px-sm py-sm text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-medium text-sm">Help Center</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium text-sm">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- BottomNavBar (Shared Component JSON Mapping - Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 px-4 pb-safe bg-white dark:bg-slate-900 z-50 md:hidden border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-xs text-slate-400 dark:text-slate-500 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-indigo-600 dark:text-indigo-400 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Tasks</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-slate-400 dark:text-slate-500 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Map</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-slate-400 dark:text-slate-500 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>
