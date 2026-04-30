@@ -14,6 +14,7 @@ import ImpactDashboard from './pages/ImpactDashboard';
 import PublicImpactMap from './pages/PublicImpactMap';
 import CaseStudyDetail from './pages/CaseStudyDetail';
 import ImpactReports from './pages/ImpactReports';
+import AIChatbot from './components/AIChatbot';
 
 const ProtectedRoute = ({ children, allowedRole }) => {
   const { currentUser, userRole, loading } = useAuth();
@@ -70,6 +71,7 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
+        <AIChatbot />
       </Router>
     </AuthProvider>
   );

@@ -52,7 +52,7 @@ export const getVolunteerRecommendations = async (needDetails, availableVoluntee
           content: prompt,
         },
       ],
-      model: "llama-3.1-70b-versatile", // Using 70b as the highest capacity text model
+      model: "openai/gpt-oss-120b",
       temperature: 0.1,
       response_format: { type: "json_object" }
     });
@@ -84,7 +84,7 @@ export const extractNeedFromImage = async (base64Image) => {
           ]
         }
       ],
-      model: "llama-3.2-90b-vision-preview", // 90b vision model
+      model: "openai/gpt-oss-120b",
       temperature: 0.1,
       response_format: { type: "json_object" }
     });
@@ -92,6 +92,26 @@ export const extractNeedFromImage = async (base64Image) => {
     return JSON.parse(chatCompletion.choices[0].message.content);
   } catch (error) {
     console.error("Groq Vision AI Error:", error);
+    throw error;
+  }
+};
+
+export const chatWithBot = async (messages) => {
+  const systemMessage = {
+    role: "system",
+    content: "You are the ImpactFlow AI Assistant. You help volunteers and organizations with disaster response, community needs, and using the ImpactFlow platform. If the user asks ANY question that is NOT related to this project (ImpactFlow, disaster response, volunteering, community needs), you MUST strictly reply with something like: 'I am an AI assistant specifically built for ImpactFlow. I am not made for these types of questions and cannot answer them.' Do not entertain off-topic questions under any circumstances."
+  };
+
+  try {
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [systemMessage, ...messages],
+      model: "openai/gpt-oss-120b",
+      temperature: 0.3,
+    });
+
+    return chatCompletion.choices[0].message.content;
+  } catch (error) {
+    console.error("Groq AI Error:", error);
     throw error;
   }
 };
