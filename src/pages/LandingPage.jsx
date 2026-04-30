@@ -533,7 +533,7 @@ const LandingPage = () => {
           ))}
         </div>
         <div className="max-w-7xl mx-auto mt-20 pt-10 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest gap-6">
-          <p>© 2024 ImpactFlow Inc. All Rights Reserved.</p>
+          <p>© 2026 ImpactFlow Inc. All Rights Reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
