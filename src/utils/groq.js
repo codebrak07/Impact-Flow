@@ -1,14 +1,19 @@
 import Groq from "groq-sdk";
 
 const groq = new Groq({
-  apiKey: "YOUR_GROQ_API_KEY",
-  dangerouslyAllowBrowser: true // For hackathon demo purposes
+  apiKey: import.meta.env.VITE_GROQ_API_KEY,
+  dangerouslyAllowBrowser: true // For frontend demo purposes
 });
 
 export const getVolunteerRecommendations = async (needDetails, availableVolunteers) => {
   const prompt = `
-    You are an AI Volunteer Matching assistant for the Impact Resource Nexus NGO platform.
+    You are an advanced AI Volunteer Matching assistant for "ImpactFlow" (Impact Resource Nexus), an NGO disaster response and community resource management platform.
     
+    CONTEXT:
+    The platform connects verified volunteers with urgent community needs (Medical, Food, Shelter, Water & Sanitation, Education). 
+    Volunteers have profiles detailing their location, travel radius, availability, specialized skills, and vehicle access.
+    Needs have urgency levels (Critical, High, Medium, Low), location, and number of people affected.
+
     COMMUNITY NEED:
     ${JSON.stringify(needDetails, null, 2)}
     
@@ -16,10 +21,14 @@ export const getVolunteerRecommendations = async (needDetails, availableVoluntee
     ${JSON.stringify(availableVolunteers, null, 2)}
     
     TASK:
-    Analyze the need and the volunteers. Find the best matches based on skills, location, and urgency.
+    Analyze the community need and the pool of available volunteers. 
+    Calculate a match score (0-100) for each volunteer based on:
+    1. Skill relevance to the need category.
+    2. Proximity (if location matches or is within travel radius).
+    3. Vehicle access (crucial for logistics and critical urgency).
+    4. Availability matching the urgency level.
     
-    STRICT RULE:
-    Return ONLY valid JSON. No text before or after.
+    Return ONLY valid JSON. No markdown, no text before or after.
     
     JSON FORMAT:
     {
@@ -27,9 +36,9 @@ export const getVolunteerRecommendations = async (needDetails, availableVoluntee
         {
           "volunteerId": "ID_HERE",
           "name": "NAME_HERE",
-          "match_score": 0-100,
-          "confidence": "Low/Medium/High",
-          "reason": "BRIEF_EXPLANATION"
+          "match_score": 85,
+          "confidence": "High/Medium/Low",
+          "reason": "Explain exactly why this volunteer is a good match based on their skills, location, and vehicle access."
         }
       ]
     }
@@ -43,7 +52,7 @@ export const getVolunteerRecommendations = async (needDetails, availableVoluntee
           content: prompt,
         },
       ],
-      model: "llama3-8b-8192",
+      model: "llama-3.1-70b-versatile", // Using 70b as the highest capacity text model
       temperature: 0.1,
       response_format: { type: "json_object" }
     });
@@ -51,6 +60,38 @@ export const getVolunteerRecommendations = async (needDetails, availableVoluntee
     return JSON.parse(chatCompletion.choices[0].message.content);
   } catch (error) {
     console.error("Groq AI Error:", error);
+    throw error;
+  }
+};
+
+export const extractNeedFromImage = async (base64Image) => {
+  try {
+    const chatCompletion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: "You are an AI assistant for an NGO. Extract the following information from this survey form or field photo: 1. Community Name, 2. Need Category (Medical, Food, Shelter, Water & Sanitation, or Education), 3. People Affected (number), 4. Urgency Level (Critical, High, Medium, or Low). Return ONLY valid JSON with keys: communityName, needCategory, peopleAffected (integer), urgencyLevel."
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: base64Image
+              }
+            }
+          ]
+        }
+      ],
+      model: "llama-3.2-90b-vision-preview", // 90b vision model
+      temperature: 0.1,
+      response_format: { type: "json_object" }
+    });
+
+    return JSON.parse(chatCompletion.choices[0].message.content);
+  } catch (error) {
+    console.error("Groq Vision AI Error:", error);
     throw error;
   }
 };

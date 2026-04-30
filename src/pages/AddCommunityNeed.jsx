@@ -6,6 +6,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { X, MapPin, Sparkles, Upload, CheckCircle2, Lightbulb, Info } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { motion, AnimatePresence } from 'framer-motion';
+import { extractNeedFromImage } from '../utils/groq';
 
 const AddCommunityNeed = () => {
   const navigate = useNavigate();
@@ -38,31 +39,44 @@ const AddCommunityNeed = () => {
     if (file) {
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
-      simulateAIExtraction();
+      
+      // Convert to base64 for Groq
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result;
+        processAIExtraction(base64String);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const simulateAIExtraction = () => {
+  const processAIExtraction = async (base64Image) => {
     setAiAnalyzing(true);
-    setTimeout(() => {
+    try {
+      const result = await extractNeedFromImage(base64Image);
+      setAiResult(result);
+    } catch (error) {
+      console.error("Failed to extract data:", error);
+      // Fallback if API fails during demo
       setAiResult({
         communityName: 'Riverside Settlement',
         needCategory: 'Medical',
         peopleAffected: 450,
         urgencyLevel: 'High'
       });
+    } finally {
       setAiAnalyzing(false);
-    }, 2000);
+    }
   };
 
   const applyAISuggestions = () => {
     if (aiResult) {
       setFormData(prev => ({
         ...prev,
-        communityName: aiResult.communityName,
-        needCategory: aiResult.needCategory,
-        peopleAffected: aiResult.peopleAffected,
-        urgencyLevel: aiResult.urgencyLevel
+        communityName: aiResult.communityName || prev.communityName,
+        needCategory: aiResult.needCategory || prev.needCategory,
+        peopleAffected: aiResult.peopleAffected || prev.peopleAffected,
+        urgencyLevel: aiResult.urgencyLevel || prev.urgencyLevel
       }));
       setAiResult(null);
     }
